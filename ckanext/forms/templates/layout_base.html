@@ -33,7 +33,6 @@
   <link rel="stylesheet" href="${g.site_url}/css/boilerplate.css?v=2" />
   <link rel="stylesheet" href="${g.site_url}/css/blueprint/screen.css" type="text/css" media="screen, projection" />
   <link rel="stylesheet" href="${g.site_url}/css/blueprint/print.css" type="text/css" media="print" />
-  <link rel="stylesheet" href="${g.site_url}/css/prueba.css" type="text/css" media="print" />
   <!--[if lt IE 8]>
     <link rel="stylesheet" href="${g.site_url}/css/blueprint/ie.css" type="text/css" media="screen, projection">
   <![endif]-->
@@ -244,8 +243,11 @@
       // Declare js array from Python string
       ${['\'%s\', '%s  for s in config.get('ckan.plugins','').split(' ')]}
     ];
+    CKAN.SITE_URL = '${h.url('/')}';
+    // later use will add offsets with leading '/' so ensure no trailing slash
+    CKAN.SITE_URL = CKAN.SITE_URL.replace(/\/$/, '');
     $(document).ready(function() {
-        var ckan_user = $.cookie("ckan_display_name");
+        var ckan_user = '${c.user}';
         if (ckan_user) {
             $(".ckan-logged-out").hide();
             $(".ckan-logged-in").show();
