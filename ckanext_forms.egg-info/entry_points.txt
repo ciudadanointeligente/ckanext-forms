@@ -1,5 +1,0 @@
-
-        [ckan.plugins]
-	# Add plugins here, eg
-	forms=ckanext.forms.plugin:CustomForm
-	
