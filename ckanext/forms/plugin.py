@@ -31,7 +31,7 @@ class CustomForm(SingletonPlugin):
     
     
     def before_map(self, map):
-        map.connect('/dataset/edit/{id}', controller='ckanext.forms.controller:package', action='edit')
+        map.connect('/dataset/edit/{id}', controller='ckanext.forms.controller.package:package', action='edit')
         return map
         
         
