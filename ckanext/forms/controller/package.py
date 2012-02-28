@@ -7,10 +7,11 @@ from ckan.logic import NotAuthorized
 
 
 
-class FormsController(PackageController):
+class package(PackageController):
     package_form = 'custom_package_form.html'
     
-    def _setup_template_variables(self, context, data_dict):
+    def _setup_template_variables(self, context, data_dict, package_type=None):
+        print package_type
         c.groups_authz = get_action('group_list_authz')(context, data_dict)
         data_dict.update({'available_only':True})
         c.groups_available = get_action('group_list_authz')(context, data_dict)
